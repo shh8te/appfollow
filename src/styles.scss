@@ -1,0 +1,1002 @@
+// z-indexes
+$md-background: 0;
+$md-gradient: 1;
+$md-main: 5;
+$md-viking: 7;
+$md-sticky-top: 10;
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 70px 1fr auto;
+  grid-template-areas:
+    'sticky-top'
+    'main';
+}
+
+.sticky-top {
+  grid-area: sticky-top;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'name button';
+  padding: 7px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  vertical-align: baseline;
+  z-index: $md-sticky-top;
+  &__name {
+    grid-area: name;
+    font-size: 24px;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-self: center;
+    letter-spacing: 3px;
+  }
+  &__button {
+    grid-area: button;
+    justify-self: end;
+    width: 113px;
+    height: 50px;
+    box-sizing: border-box;
+    border-color: rgb(30, 148, 232);
+    border-radius: 3px;
+    border-width: 1px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #fff;
+    color: rgb(30, 148, 232);
+    font-size: 17px;
+    outline: none;
+    cursor: pointer;
+    &:active {
+      background-color: rgb(30, 148, 232);
+      color: #fff;
+    }
+  }
+}
+
+.main {
+  grid-area: main;
+  min-height: 50px;
+  display: grid;
+  overflow: hidden;
+  @media (min-width: 320px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'sign-up'
+      'image'
+      'we-support'
+      'trusted-by';
+    &__sign-up {
+      grid-area: sign-up;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        'header'
+        'text'
+        'form';
+      padding-left: 7%;
+      padding-right: 7%;
+      z-index: $md-main;
+      &__section-header {
+        grid-area: header;
+        background-image: url('../src/img/stars.png');
+        background-origin: border-box;
+        background-repeat: none;
+        background-position: top;
+        background-size: cover;
+        padding-top: 25px;
+        &__text {
+          font-size: 25px;
+          font-family: 'Noto Sans KR', sans-serif;
+          letter-spacing: 1px;
+          font-weight: 600;
+          font-style: normal;
+          color: #1e384e;
+          line-height: 1.5;
+        }
+      }
+      &__text {
+        grid-area: text;
+        font-size: 12px;
+        color: #637889;
+        font-family: 'Noto Sans KR', sans-serif;
+        line-height: 1.8;
+        font-weight: 400;
+        font-style: normal;
+      }
+      &__form {
+        grid-area: form;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+          'email'
+          'submit'
+          'sign-in';
+        & > input, button {
+          height: 42px;
+          font-size: 18px;
+          outline: none;
+          width: 100%;
+          box-sizing: border-box;
+          border-radius: 3px;
+          padding: 10px 20px 10px 20px;
+          margin-bottom: 10px;
+        }
+        &__email {
+          grid-area: email;
+          width: 100%;
+          color: rgb(151, 151, 151);
+          border-color: rgb(151, 151, 151);
+          border-width: 1px;
+          border-style: solid;
+          &::placeholder {
+            color: rgba(151, 151, 151, 0.5);
+          }
+          &--warning {
+            grid-area: email;
+            color: rgb(151, 151, 151);
+            border-color: rgb(234, 50, 38);
+            margin-bottom: 10px;
+            border-width: 1px;
+            border-style: solid;
+            &::placeholder {
+              color: rgba(151, 151, 151, 0.5);
+            }
+          }
+        }
+        &__submit {
+          grid-area: submit;
+          color: #fff;
+          background-color: rgb(234, 50, 38);
+          cursor: pointer;
+          border-color: rgb(234, 50, 38);
+          &:active {
+            background-color: rgba(234, 50, 38, 0.9);
+          }
+        }
+        &__sign-in {
+          grid-area: sign-in;
+          margin-top: 10px;
+          font-weight: 400;
+          font-style: normal;
+          font-size: 14px;
+          & > span {
+            color: #637889;
+            margin-right: 7px;
+          }
+          & > a {
+            color: red;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    &__image {
+      grid-area: image;
+      position: relative;
+      width: 100%;
+      min-height: 300px;
+      overflow: hidden;
+      &__mountains {
+        display: none;
+      }
+      &__stars {
+        display: none;
+      }
+      &__star-small {
+        position: absolute;
+        top: 10px;
+        left: 60px;
+        width: 21px;
+        height: 20px;
+      }
+      &__star-big {
+        position: absolute;
+        top: 55px;
+        left: 160px;
+        width: 24px;
+        height: 25px;
+      }
+      &__star-extra-big {
+        display: none;
+      }
+      &__star-extra-bigger {
+        display: none;
+      }
+      &__star-extra-the-biggest {
+        display: none;
+      }
+      &__1up {
+        top: 60px;
+        left: 70px;
+        width: 69px;
+        height: 44px;
+        position: absolute;
+      }
+      &__circle {
+        width: 120px;
+        height: 120px;
+        top: 50px;
+        left: 0;
+        position: absolute;
+      }
+      &__phone {
+        top: 87px;
+        left: 37px;
+        width: 48px;
+        height: 48px;
+        position: absolute;
+      }
+      &__viking {
+        width: 280px;
+        height: 191px;
+        top: 95px;
+        left: 75px;
+        position: absolute;
+        z-index: $md-viking;
+      }
+    }
+    &__we-support {
+      grid-area: we-support;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas:
+        'text text text . . .'
+        'playmarket appstore amazon appstore2 xbox steam';
+      padding-left: 7%;
+      padding-right: 7%;
+      z-index: $md-main;
+      & > a {
+        background-origin: border-box;
+        background-repeat: none;
+        background-size: cover;
+        cursor: pointer;
+        font-size: 0;
+      }
+      & > a:not(:last-child) {
+        display: block;
+        align-self: center;
+      }
+      &__text {
+        grid-area: text;
+        margin-bottom: 0;
+        margin-top: 30px;
+      }
+      &__playmarket {
+        grid-area: playmarket;
+        background-image: url('../src/img/playmarket.png');
+        width: 28px;
+        height: 32px;
+      }
+      &__appstore {
+        grid-area: appstore;
+        background-image: url('../src/img/appstore.png');
+        width: 31px;
+        height: 31px;
+      }
+      &__amazon {
+        grid-area: amazon;
+        background-image: url('../src/img/amazon.png');
+        width: 31px;
+        height: 31px;
+      }
+      &__appstore2 {
+        grid-area: appstore2;
+        background-image: url('../src/img/appstore2.png');
+        width: 36px;
+        height: 36px;
+      }
+      &__xbox {
+        grid-area: xbox;
+        background-image: url('../src/img/xbox.png');
+        width: 65px;
+        height: 20px;
+      }
+      &__steam {
+        grid-area: steam;
+        justify-self: end;
+        align-self: end;
+        background-image: url('../src/img/steam.png');
+        width: 31px;
+        height: 42px;
+        margin-top: 15px;
+      }
+    }
+    &__trusted-by {
+      grid-area: trusted-by;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        'gradient'
+        'text'
+        'links';
+      &__wrapper {
+        grid-area: gradient;
+        width: 100%;
+        min-height: 120px;
+        &__gradient {
+          width: 120%;
+          min-height: 100px;
+          background: linear-gradient(to bottom, white 40%, #DCECFF 40%, white);
+          transform: rotate(-5deg) translateX(-50px);
+          z-index: $md-gradient;
+        }
+      }
+      &__section-header {
+        grid-area: text;
+        margin-top: 0;
+        padding-left: 7%;
+        padding-right: 7%;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 22px;
+        letter-spacing: 1px;
+        font-weight: 600;
+        font-style: normal;
+        color: #1e384e;
+        line-height: 1.5;
+        justify-self: center;
+        text-align: center;
+      }
+      &__links {
+        grid-area: links;
+        padding-left: 7%;
+        padding-right: 7%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+          'mobilityware wargaming'
+          'socialquantum nekki'
+          'jamcity nival'
+          'gameinsight discord'
+          'playrix .';
+        font-size: 0;
+        & > a {
+          display: block;
+          place-self: center;
+          background-origin: border-box;
+          background-repeat: none;
+          background-size: cover;
+          cursor: pointer;
+        }
+        &__mobilityware {
+          grid-area: mobilityware;
+          background-image: url('../src/img/mobilityware.png');
+          width: 125px;
+          height: 63px;
+        }
+        &__wargaming {
+          grid-area: wargaming;
+          background-image: url('../src/img/wargaming.png');
+          width: 110px;
+          height: 51px;
+        }
+        &__socialquantum {
+          grid-area: socialquantum;
+          background-image: url('../src/img/socialquantum.png');
+          width: 120px;
+          height: 27px;
+        }
+        &__nekki {
+          grid-area: nekki;
+          background-image: url('../src/img/nekki.png');
+          width: 82px;
+          height: 35px;
+        }
+        &__jamcity {
+          grid-area: jamcity;
+          background-image: url('../src/img/jamcity.png');
+          width: 97px;
+          height: 23px;
+        }
+        &__nival{
+          grid-area: nival;
+          background-image: url('../src/img/nival.png');
+          width: 82px;
+          height: 37px;
+        }
+        &__gameinsight {
+          grid-area: gameinsight;
+          background-image: url('../src/img/gameinsight.png');
+          width: 110px;
+          height: 32px;
+        }
+        &__discord {
+          grid-area: discord;
+          background-image: url('../src/img/discord.png');
+          width: 110px;
+          height: 30px;
+        }
+        &__playrix{
+          grid-area: playrix;
+          background-image: url('../src/img/playrix.png');
+          width: 88px;
+          height: 25px;
+        }
+      }
+    }
+  }
+  @media (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: 10% 512px 1fr 10%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      '. sign-up image image'
+      '. we-support image image'
+      '. trusted-by trusted-by .';
+    &__sign-up {
+      display: grid;
+      grid-template-columns: 256px 256px;
+      grid-template-rows: auto;
+      grid-template-areas:
+        'header header'
+        'text text'
+        'form form';
+      grid-area: sign-up;
+      padding: 0;
+      z-index: $md-main;
+      &__section-header {
+        grid-area: header;
+        background: none;
+        padding-top: 40px;
+        max-width: 400px;
+        animation:
+          sign-up-text-appear 0.6s ease-in-out 0s normal 1 forwards running;
+        &__text {
+          font-size: 44px;
+          font-family: 'Noto Sans KR', sans-serif;
+          letter-spacing: 1px;
+          font-weight: 600;
+          font-style: normal;
+          color: #1e384e;
+          line-height: 1.5;
+          margin-bottom: 0;
+        }
+      }
+      &__text {
+        grid-area: text;
+        font-size: 16px;
+        color: #637889;
+        font-family: 'Noto Sans KR', sans-serif;
+        line-height: 1.8;
+        font-weight: 400;
+        font-style: normal;
+        max-width: 425px;
+        letter-spacing: 0.3px;
+        animation:
+          sign-up-text-appear 0.6s ease-in-out 0s normal 1 forwards running;
+      }
+      &__form {
+        grid-area: form;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+          'email submit'
+          'sign-in sign-in';
+        animation:
+          form-appears 1.2s ease-in-out 0s normal 1 forwards running;
+        & > input, button {
+          height: 49px;
+          font-size: 18px;
+          outline: none;
+          width: 100%;
+          box-sizing: border-box;
+          border-radius: 3px;
+          padding: 10px 20px 10px 20px;
+          margin-bottom: 10px;
+        }
+        &__email {
+          grid-area: email;
+          color: rgb(151, 151, 151);
+          border-color: rgb(151, 151, 151);
+          border-width: 1px;
+          border-style: solid;
+          &::placeholder {
+            color: rgba(151, 151, 151, 0.5);
+          }
+          &--warning {
+            grid-area: email;
+            color: rgb(151, 151, 151);
+            border-color: rgb(234, 50, 38);
+            margin-bottom: 10px;
+            border-width: 1px;
+            border-style: solid;
+            border-radius: 3px;
+            &::placeholder {
+              color: rgba(151, 151, 151, 0.5);
+            }
+          }
+        }
+        &__submit {
+          grid-area: submit;
+          color: #fff;
+          background-color: rgb(234, 50, 38);
+          cursor: pointer;
+          margin-left: -2px;
+          border-color: rgb(234, 50, 38);
+          &:active {
+            background-color: rgba(234, 50, 38, 0.9);
+          }
+        }
+        &__sign-in {
+          grid-area: sign-in;
+          margin-top: 10px;
+          font-weight: 400;
+          font-style: normal;
+          font-size: 15px;
+          & > span {
+            color: #637889;
+            margin-right: 7px;
+          }
+          & > a {
+            color: red;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    &__image {
+      grid-area: image;
+      position: relative;
+      width: 100%;
+      min-height: 300px;
+      overflow: visible;
+      &__mountains {
+        display: block;
+        width: 608px;
+        height: 603px;
+        position: absolute;
+        top: 0;
+        right: -30px;
+        animation:
+          mountains-appear 2.5s linear 0s normal 1 forwards running;
+      }
+      &__stars {
+        display: block;
+        width: 480px;
+        height: 185px;
+        position: absolute;
+        top: 30px;
+        left: 190px;
+        animation: 
+          pulse-stars 1.8s ease-in-out 0s alternate infinite both running;
+      }
+      &__star-small {
+        position: absolute;
+        top: 10px;
+        left: 240px;
+        width: 21px;
+        height: 20px;
+        animation: 
+          pulse-star-small 1.6s ease-in-out 0s alternate infinite both running;
+      }
+      &__star-big {
+        position: absolute;
+        top: 120px;
+        left: 140px;
+        width: 24px;
+        height: 25px;
+        animation: 
+          pulse-star-big 1.2s ease-in-out 0s alternate infinite both running;
+      }
+      &__star-extra-big {
+        display: block;
+        position: absolute;
+        top: 440px;
+        left: 40px;
+        width: 24px;
+        height: 25px;
+        animation: 
+          pulse-star-extra-big 1.4s ease-in-out 0s alternate infinite both running;
+      }
+      &__star-extra-bigger {
+        display: block;
+        position: absolute;
+        top: 120px;
+        left: 0;
+        width: 42px;
+        height: 42px;
+        animation: 
+          pulse-star-extra-bigger 1.8s ease-in-out 0s alternate infinite none running;
+      }
+      &__star-extra-the-biggest {
+        display: block;
+        position: absolute;
+        top: 35px;
+        left: 15px;
+        width: 90px;
+        height: 90px;
+        animation: 
+          pulse-star-extra-the-biggest 1.2s ease-in-out 0s alternate infinite both running;
+      }
+      &__1up {
+        top: 170px;
+        left: 60px;
+        width: 95px;
+        height: 61px;
+        position: absolute;
+        animation: 
+          lvlup-appears 4s linear 0s normal 1 forwards running;
+      }
+      &__circle {
+        width: 187px;
+        height: 187px;
+        top: 170px;
+        left: -40px;
+        position: absolute;
+        animation: 
+          pulse-circle 1.6s ease-in 0s alternate infinite both running;
+      }
+      &__phone {
+        top: 235px;
+        left: 25px;
+        width: 64px;
+        height: 64px;
+        position: absolute;
+        animation:
+          phone-appears 2.0s linear 0s normal 1 forwards running;
+      }
+      &__viking {
+        width: 621px;
+        height: 423px;
+        top: 200px;
+        left: 45px;
+        position: absolute;
+        z-index: $md-viking;
+        animation:
+          viking-and-gradient-appear 2s ease-in-out 0s normal 1 forwards running;
+      }
+    }
+    &__we-support {
+      grid-area: we-support;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas:
+        'text text text . . .'
+        'playmarket appstore amazon appstore2 xbox steam';
+      padding: 0;
+      max-width: 365px;
+      z-index: $md-main;
+      animation:
+        we-support-appears 1.8s ease-out 0s normal 1 forwards running;
+      & > a {
+        background-origin: border-box;
+        background-repeat: none;
+        background-size: cover;
+        cursor: pointer;
+        font-size: 0;
+      }
+      & > a:not(:last-child) {
+        display: block;
+        align-self: center;
+      }
+      &__text {
+        grid-area: text;
+        align-self: end;
+        margin: 0;
+      }
+      &__playmarket {
+        grid-area: playmarket;
+        background-image: url('../src/img/playmarket.png');
+        width: 35px;
+        height: 39px;
+      }
+      &__appstore {
+        grid-area: appstore;
+        background-image: url('../src/img/appstore.png');
+        width: 39px;
+        height: 39px;
+      }
+      &__amazon {
+        grid-area: amazon;
+        background-image: url('../src/img/amazon.png');
+        width: 39px;
+        height: 39px;
+      }
+      &__appstore2 {
+        grid-area: appstore2;
+        background-image: url('../src/img/appstore2.png');
+        width: 44px;
+        height: 44px;
+      }
+      &__xbox {
+        grid-area: xbox;
+        background-image: url('../src/img/xbox.png');
+        width: 81px;
+        height: 25px;
+      }
+      &__steam {
+        grid-area: steam;
+        justify-self: end;
+        align-self: end;
+        background-image: url('../src/img/steam.png');
+        width: 39px;
+        height: 53px;
+        margin-top: 15px;
+        z-index: $md-main;
+      }
+    }
+    &__trusted-by {
+      grid-area: trusted-by;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        'gradient'
+        'text'
+        'links';
+      &__wrapper {
+        grid-area: gradient;
+        width: 100%;
+        min-height: 200px;
+        animation:
+          viking-and-gradient-appear 2s ease-in-out 0s normal 1 forwards running;
+        &__gradient {
+          width: 160%;
+          min-height: 380px;
+          background: linear-gradient(to bottom, transparent 40%, #DCECFF 40%, white);
+          transform: rotate(-5deg) translateX(-50px);
+          margin-left: -340px;
+          margin-top: -140px;
+          z-index: $md-gradient;
+        }
+      }
+      &__section-header {
+        grid-area: text;
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 0;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 30px;
+        letter-spacing: 1px;
+        font-weight: 600;
+        font-style: normal;
+        color: #1e384e;
+        line-height: 1.5;
+        justify-self: center;
+        text-align: center;
+        z-index: $md-main;
+      }
+      &__links {
+        grid-area: links;
+        padding-left: 0;
+        padding-right: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+          'nekki mobilityware socialquantum wargaming jamcity'
+          'gameinsight playrix nival discord .';
+        font-size: 0;
+        z-index: 6;
+        & > a {
+          display: block;
+          place-self: center;
+          background-origin: border-box;
+          background-repeat: none;
+          background-size: cover;
+          cursor: pointer;
+        }
+        &__nekki {
+          grid-area: nekki;
+          background-image: url('../src/img/nekki.png');
+          width: 124px;
+          height: 54px;
+        }
+        &__mobilityware {
+          grid-area: mobilityware;
+          background-image: url('../src/img/mobilityware.png');
+          width: 190px;
+          height: 95px;
+        }
+        &__socialquantum {
+          grid-area: socialquantum;
+          background-image: url('../src/img/socialquantum.png');
+          width: 184px;
+          height: 41px;
+        }
+        &__wargaming {
+          grid-area: wargaming;
+          background-image: url('../src/img/wargaming.png');
+          width: 166px;
+          height: 77px;
+        }
+        &__jamcity {
+          grid-area: jamcity;
+          background-image: url('../src/img/jamcity.png');
+          width: 148px;
+          height: 35px;
+        }
+        &__gameinsight {
+          grid-area: gameinsight;
+          background-image: url('../src/img/gameinsight.png');
+          width: 167px;
+          height: 48px;
+        }
+        &__playrix{
+          grid-area: playrix;
+          background-image: url('../src/img/playrix.png');
+          width: 133px;
+          height: 37px;
+        }
+        &__nival{
+          grid-area: nival;
+          background-image: url('../src/img/nival.png');
+          width: 124px;
+          height: 56px;
+        }
+        &__discord {
+          grid-area: discord;
+          background-image: url('../src/img/discord.png');
+          width: 167px;
+          height: 46px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes lvlup-appears {
+  0%, 42% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes phone-appears {
+  0%, 36% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes viking-and-gradient-appear {
+  0%, 33% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes we-support-appears {
+  0%, 37% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes form-appears {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sign-up-text-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mountains-appear {
+  0%, 36% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.88;
+  }
+}
+
+@keyframes pulse-star-extra-big {
+  0%, 29% {
+    opacity: 0;
+    transform: scale(1)
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2)
+  }
+}
+
+@keyframes pulse-star-extra-bigger {
+  0%, 33% {
+    opacity: 0;
+    transform: scale(1)
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.15)
+  }
+}
+
+@keyframes pulse-star-extra-the-biggest {
+  0% {
+    opacity: 0;
+    transform: scale(1)
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.15)
+  }
+}
+
+@keyframes pulse-star-big {
+  0% {
+    opacity: 0;
+    transform: scale(1)
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.2)
+  }
+}
+
+@keyframes pulse-star-small {
+  0%, 37% {
+    opacity: 0;
+    transform: scale(1)
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.15)
+  }
+}
+
+@keyframes pulse-circle {
+  0%, 25% {
+    opacity: 0.25;
+    transform: scale(1.15)
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.95)
+  }
+}
+
+@keyframes pulse-stars {
+  0%, 28% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 1;
+  }
+}
