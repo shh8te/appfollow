@@ -336,6 +336,7 @@ body {
           background: linear-gradient(to bottom, white 40%, #DCECFF 40%, white);
           transform: rotate(-5deg) translateX(-50px);
           z-index: $md-gradient;
+          font-size: 0;
         }
       }
       &__section-header {
@@ -758,6 +759,7 @@ body {
           margin-left: -340px;
           margin-top: -140px;
           z-index: $md-gradient;
+          font-size: 0;
         }
       }
       &__section-header {
